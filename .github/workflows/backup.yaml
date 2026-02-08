@@ -55,10 +55,10 @@ jobs:
 
       - name: Backup data
         if: env.BACKUP_ENABLED == 'true'
-        run: supabase db dump --db-url "$SUPABASE_DB_URL" -f ${{ env.BACKUP_FOLDER }}/data.sql --data-only --use-copy
+        run: supabase db dump --db-url "$SUPABASE_DB_URL" -f ${{ env.BACKUP_FOLDER }}/data.sql --data-only --use-copy --schema public
 
       - name: Commit backups
         if: env.BACKUP_ENABLED == 'true'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Mvabrigos Supabase backup
+          commit_message: Hunt Compare Supabase backup
